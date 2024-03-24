@@ -38,6 +38,15 @@ void insertAtEnd(struct node** head, int data){
     }
 }
 
+//function to print linked list
+void print(struct node* head){
+    while(head!=NULL){
+        printf("%d ", head->data);
+        head=head->next;
+    }
+    printf("\n");
+}
+
 //main function
 int main(){
    struct node* head = NULL;
@@ -45,6 +54,8 @@ int main(){
    insertAtBeg(&head,1);
    insertAtBeg(&head,90);
    insertAtBeg(&head,16);
+
+   print(head);
 
     return 0;
 }
