@@ -17,14 +17,20 @@ struct node* createNode(int data){
 }
 
 //function for inserting node at Beginning
-void insertAtBeg(struct node** head, int data){
+void insertAtBeg(struct node** head){
+    int data;
+    printf("Enter element to be inserted: ");
+    scanf("%d", &data);
     struct node* newnode = createNode(data);
     newnode->next=*head;
     *head = newnode;
 }
 
 //function for inserting node at end
-void insertAtEnd(struct node** head, int data){
+void insertAtEnd(struct node** head){
+    int data;
+    printf("Enter element to be inserted: ");
+    scanf("%d", &data);
     struct node* newnode = createNode(data);
     if(*head==NULL){
         *head = newnode;
@@ -39,11 +45,17 @@ void insertAtEnd(struct node** head, int data){
 }
 
 //function for inserting node at a specific position
-void insertAt(struct node* head, int data, int ind){
+void insertAt(struct node* head){
+    int ind;
+    printf("Enter index: ");
+    scanf("%d", &ind);
     if(ind<=0){
         printf("Invalid position!");
         return;
     }
+    int data;
+    printf("Enter element to be inserted: ");
+    scanf("%d", &data);
     struct node* newnode = createNode(data);
     struct node* temp = head;
     int count=0;
@@ -71,14 +83,31 @@ void print(struct node* head){
 
 //main function
 int main(){
+    int option;
    struct node* head = NULL;
-   insertAtBeg(&head,10);
-   insertAtBeg(&head,1);
-   insertAtBeg(&head,90);
-   insertAtBeg(&head,16);
 
-   print(head);
-
+    do{
+        printf("\nSelect the operation to be performed on linked list: ");
+        printf("\n1.\tDisplay list \n2.\tInsertion at beginning. \n3.\tInsertion at end. \n4.\tInsertion at specific position. \n5.\tExit\n");
+        scanf("%d", &option);
+        switch (option)
+        {
+        case 1 : print(head);
+            break;
+        case 2 : insertAtBeg(&head);
+            break;
+        case 3 : insertAtEnd(&head);
+            break;
+        case 4 : insertAt(head);
+            break;
+        case 5 : return 0;
+                 break;
+        
+        default: printf("Invalid option: ");
+            break;
+        }
+    }
+    while(1);
     return 0;
 }
 
