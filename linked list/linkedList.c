@@ -38,6 +38,28 @@ void insertAtEnd(struct node** head, int data){
     }
 }
 
+//function for inserting node at a specific position
+void insertAt(struct node* head, int data, int ind){
+    if(ind<=0){
+        printf("Invalid position!");
+        return;
+    }
+    struct node* newnode = createNode(data);
+    struct node* temp = head;
+    int count=0;
+    while(temp!=NULL && count < ind-1){
+        temp = temp->next;
+        count++;
+    }
+    if(temp==NULL){
+        printf("Invalid position!");
+    }
+    else{
+        newnode->next=temp->next;
+        temp->next=newnode;
+    }
+}
+
 //function to print linked list
 void print(struct node* head){
     while(head!=NULL){
