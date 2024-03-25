@@ -37,7 +37,7 @@ int main(){
     }
     //creating output array of size n and placing elements in correct position
     int output[n];
-    for (int i = 0; i < n; i++)
+    for (int i = n-1; i>=0; i--)
     {
         output[--count[arr[i]]]=arr[i];
     }
