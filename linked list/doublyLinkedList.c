@@ -82,9 +82,9 @@ void insertAt(struct LinkedList* list){
         list->tail = newnode;
     }
     else{
-        list->tail->next=newnode;
-        newnode->prev=list->tail;
-        list->tail=newnode;
+        newnode->next=list->head;
+        list->head->prev = newnode;
+        list->head = newnode;
     }
     return;
     }
@@ -210,8 +210,7 @@ void print(struct LinkedList* list){
 int main()
 {
     int option;
-    struct LinkedList* list = createLinkedList();
-    // insertAt(list);   
+    struct LinkedList* list = createLinkedList(); 
     do{
         printf("\nSelect the operation to be performed on linked list: ");
         printf("\n1.\tDisplay list \n2.\tInsertion at beginning. \n3.\tInsertion at end. \n4.\tInsertion at specific position. \n5.\tDelete from beginning. \n6.\tDelete from end. \n7.\tDelete from specific index. \n8.\tExit\n");
