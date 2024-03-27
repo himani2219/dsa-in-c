@@ -39,7 +39,7 @@ void insertAtBeg(struct LinkedList* list){
     if(list->head==NULL){
         list->head=newnode;
         list->tail=newnode;
-        newnode->next=NULL;
+        newnode->next=newnode;
     }
     else{
         newnode->next=list->head;
@@ -57,6 +57,7 @@ void insertAtEnd(struct LinkedList* list){
     if(list->head==NULL){
         list->head=newnode;
         list->tail=newnode;
+        newnode->next=newnode;
     }
     else{
         list->tail->next=newnode;
@@ -84,6 +85,7 @@ void insertAt(struct LinkedList* list){
         if(list->head==NULL){
             list->head=newnode;
             list->tail=newnode;
+            newnode->next=newnode;
         }
         else{
             newnode->next=list->head;
@@ -124,19 +126,19 @@ void print(struct LinkedList* list){
         return;
     }
     struct node* temp = list->head;
-    printf("%d", temp->data);
-    temp=temp->next;
-    while(temp!=list->head){
+    do{
         printf("%d ", temp->data);
         temp=temp->next;
-    }
+    }while(temp!=list->head);
     printf("\n");
 }
 
 int main()
 {
     int option;
-    struct LinkedList* list = createLinkedList();  
+    struct LinkedList* list = createLinkedList(); 
+    list->head=NULL;
+    list->tail=NULL; 
     do{
         printf("\nSelect the operation to be performed on linked list: ");
         printf("\n1.\tDisplay list \n2.\tInsertion at beginning. \n3.\tInsertion at end. \n4.\tInsertion at specific position. \n5.\tDelete from beginning. \n6.\tDelete from end. \n7.\tDelete from specific index. \n8.\tExit\n");
