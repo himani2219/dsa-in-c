@@ -85,7 +85,7 @@ void delFromBeg(struct node** head){
 
 //function for deletion from end
 void delFromEnd(struct node** head){
-    struct node* temp = head;
+    struct node* temp = *head;
     if(*head == NULL){
         printf("List is Empty!");
     }
@@ -104,7 +104,8 @@ void delFromEnd(struct node** head){
 
 //function for deletion from specific position
 void delFromPos(struct node** head){
-    int ind, count;
+    int ind;
+    int count=0;
     struct node* temp = *head;
     if(*head == NULL){
         printf("List is Empty!");
