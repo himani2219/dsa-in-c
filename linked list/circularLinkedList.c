@@ -119,6 +119,86 @@ void insertAt(struct LinkedList* list){
     }
 }
 
+void delFromBeg(struct LinkedList* list){
+    if(list->head==NULL){
+        print("List is empty.");
+        return;
+    }
+
+    struct node* temp = list->head;
+    if(list->head==list->tail){
+       list->head=NULL;
+       list->tail=NULL;
+       free(temp);
+    }
+    else{
+        list->head=temp->next;
+        list->tail->next=list->head;
+        free(temp);
+    }
+}
+
+void delFromEnd(struct LinkedList* list){
+    if(list->head==NULL){
+        print("List is empty.");
+        return;
+    }
+
+    struct node* temp = list->tail;
+    if(list->head==list->tail){
+       list->head=NULL;
+       list->tail=NULL;
+       free(temp);
+    }
+    else{
+        temp=list->head;
+        while (temp->next!=list->tail)
+        {
+            temp=temp->next;
+        }
+        list->tail=temp;
+        temp=temp->next;
+        list->tail->next=list->head;
+        free(temp);
+        
+    }
+}
+
+void delFromPos(struct LinkedList* list){
+    int ind;
+    printf("Enter index: ");
+    scanf("%d", &ind);
+
+    if(ind<0){
+        printf("Invalid index!");
+        return;
+    }
+
+    if(ind==0){
+        delFromBeg(list);
+        return;
+    }
+
+    struct node* temp = list->head;
+    int count=0;
+    while(count< ind-1){
+        temp=temp->next;
+        count++;
+    }
+
+    if(temp->next==list->tail){
+        list->tail=temp;
+        temp=temp->next;
+        list->tail->next=list->head;
+        free(temp);
+    }
+    else{
+        struct node* nodeToDelete = temp->next;
+        temp->next = nodeToDelete->next;
+        free(nodeToDelete);
+    }
+}
+
 //traverse list
 void print(struct LinkedList* list){
     if (list->head == NULL) {
@@ -136,9 +216,7 @@ void print(struct LinkedList* list){
 int main()
 {
     int option;
-    struct LinkedList* list = createLinkedList(); 
-    list->head=NULL;
-    list->tail=NULL; 
+    struct LinkedList* list = createLinkedList();  
     do{
         printf("\nSelect the operation to be performed on linked list: ");
         printf("\n1.\tDisplay list \n2.\tInsertion at beginning. \n3.\tInsertion at end. \n4.\tInsertion at specific position. \n5.\tDelete from beginning. \n6.\tDelete from end. \n7.\tDelete from specific index. \n8.\tExit\n");
@@ -153,12 +231,12 @@ int main()
             break;
         case 4 : insertAt(list);
             break;
-        // case 5 : delFromBeg(list);
-        //     break;
-        // case 6 : delFromEnd(list);
-        //     break;
-        // case 7 : delFromPos(list);
-        //     break;
+        case 5 : delFromBeg(list);
+            break;
+        case 6 : delFromEnd(list);
+            break;
+        case 7 : delFromPos(list);
+            break;
         case 8 : return 0;
             break;
         
