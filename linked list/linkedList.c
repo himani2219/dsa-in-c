@@ -74,12 +74,12 @@ void insertAt(struct node* head){
 
 //function for deletion from beginning
 void delFromBeg(struct node** head){
-    struct node* temp = head;
+    struct node* temp = *head;
     if(*head == NULL){
         printf("List is Empty!");
         return;
     }
-    head=temp->next;
+    *head=temp->next;
     free(temp);
 }
 
@@ -161,11 +161,11 @@ int main(){
             break;
         case 4 : insertAt(head);
             break;
-        case 5 : delFromBeg(head);
+        case 5 : delFromBeg(&head);
             break;
-        case 6 : delFromEnd(head);
+        case 6 : delFromEnd(&head);
             break;
-        case 7 : delFromPos(head);
+        case 7 : delFromPos(&head);
             break;
         case 8 : return 0;
             break;
