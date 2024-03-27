@@ -63,3 +63,55 @@ void insertAtEnd(struct LinkedList* list){
         list->tail=newnode;
     }
 }
+
+// insertion at specific index
+void insertAt(struct LinkedList* list){
+    int data, ind;
+    printf("Enter index: ");
+    scanf("%d", ind);
+
+    if(ind<0){
+        printf("Invalid index!");
+        return;
+    }
+
+    printf("Enter element to be inserted: ");
+    scanf("%d", data);
+    struct node* newnode = createNode(data);
+
+    if(ind==0){        
+        if(list->head==NULL){
+            list->head=newnode;
+            list->tail=newnode;
+        }
+        else{
+            newnode->next=list->head;
+            list->tail->next=newnode;
+            list->head=newnode;
+        }
+        return;
+    }
+
+    int count =0;
+    struct node* temp = list->head;
+    while(temp!=NULL && count<ind-1){
+        temp=temp->next;
+        count++;
+    }
+
+    if(temp==NULL){
+        printf("Invalid position!");
+        return;
+    }
+
+    if(temp->next==NULL){
+        list->tail->next=newnode;
+        newnode->next=list->head;
+        list->tail=newnode;
+    }
+
+    else{
+        newnode->next=temp->next;
+        temp->next=newnode;
+    }
+}
