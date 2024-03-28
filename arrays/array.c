@@ -142,7 +142,7 @@ void binarySearch(int arr[], int sizeOfArray){
     scanf("%d", &el);
     int l = 0;
     int r = sizeOfArray-1;
-    while(l<r){
+    while(l<=r){
         int mid = l+(r-l)/2;
         if(arr[mid]==el){
             printf("Element found.\n");
@@ -155,7 +155,7 @@ void binarySearch(int arr[], int sizeOfArray){
             l=mid+1;
         }
     }
-    if(l==r){
+    if(l>r){
         printf("Element not found.\n");
     }
 
