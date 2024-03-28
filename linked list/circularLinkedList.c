@@ -202,7 +202,7 @@ void delFromPos(struct LinkedList* list){
 //traverse list
 void print(struct LinkedList* list){
     if (list->head == NULL) {
-        printf("List is empty\n");
+        printf("List is empty\n"); 
         return;
     }
     struct node* temp = list->head;
