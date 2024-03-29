@@ -2,15 +2,15 @@
 
 int main(){
     int n;
-    printf("Enter the size of array: ");
+    printf("Enter no. of elements in array: ");
     scanf("%d", &n);
     int arr[n];
-    printf("\nEnter elements of array:\n");
-    //creating array by taking user input
+    printf("\n Enter elements of array: \n");
     for (int i = 0; i < n; i++)
     {
         scanf("%d", &arr[i]);
     }
+    
     //finding size of count array which is equal to max element in arr
     int max=arr[0];
     for (int i = 1; i < n; i++)
