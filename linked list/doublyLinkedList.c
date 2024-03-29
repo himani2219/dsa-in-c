@@ -201,10 +201,10 @@ void delFromPos(struct LinkedList* list){
 void print(struct LinkedList* list){
     struct node* temp = list->head;
     while(temp!=NULL){
-        printf("%d ", temp->data);
+        printf("%d->", temp->data);
         temp=temp->next;
     }
-    printf("\n");
+    printf("end");
 }
 
 int main()
